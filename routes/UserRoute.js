@@ -1,9 +1,10 @@
 const router = require("express").Router();
 const User = require("../models/User");
 const bcrypt = require("bcrypt");
+const authToken = require("../middleware/JWTAuth");
 
 //Update user
-router.put("/:id", async(req, res) => {
+router.put("/:id", authToken.authenticateToken, async(req, res) => {
     if(req.body.UserId == req.params.id || req.body.IsAdmin){
         if(req.body.password){
             try {
@@ -29,7 +30,7 @@ router.put("/:id", async(req, res) => {
 });
 
 //Delete user
-router.put("/:id/delete", async(req, res) => {
+router.put("/:id/delete", authToken.authenticateToken, async(req, res) => {
     if(req.body.UserId == req.params.id || req.body.IsAdmin){
         try {
             const user = await User.findByIdAndDelete(req.params.id);
@@ -44,7 +45,7 @@ router.put("/:id/delete", async(req, res) => {
 });
 
 //Get user 
-router.get("/:id", async (req, res) => {
+router.get("/:id", authToken.authenticateToken, async (req, res) => {
     try {
         const user = await User.findById(req.params.id);
         const {Password, updatedAt, __v, Email, SentFriendRequests, ReceivedFriendRequests, ...other} = user._doc
@@ -55,7 +56,7 @@ router.get("/:id", async (req, res) => {
 })
 
 //Send user friend request
-router.put("/:id/SendRequest", async (req, res) => {
+router.put("/:id/SendRequest", authToken.authenticateToken, async (req, res) => {
     try {
         if(req.body.UserId !== req.params.id){
             try {
@@ -83,7 +84,7 @@ router.put("/:id/SendRequest", async (req, res) => {
 
 
 //Accept or deny friend request
-router.put("/:id/RespondToRequest/:response", async (req, res) => {
+router.put("/:id/RespondToRequest/:response", authToken.authenticateToken, async (req, res) => {
     try {
         if(req.body.UserId !== req.params.id){
             try {
@@ -124,7 +125,7 @@ router.put("/:id/RespondToRequest/:response", async (req, res) => {
 })
 
 //Remove user from friends list 
-router.put("/:id/RemoveFromFriends", async (req, res) => {
+router.put("/:id/RemoveFromFriends", authToken.authenticateToken, async (req, res) => {
     try {
         if(req.body.UserId !== req.params.id){
             try {
