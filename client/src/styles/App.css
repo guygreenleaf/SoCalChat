@@ -1,6 +1,8 @@
-.App-header {
+.App {
+  background-image:url('https://media.giphy.com/media/b0xUic5rrDgPe/source.gif'); background-size: contain;
   background-color: #282c34;
   min-height: 100vh;
   display: flex;
+  align-items: center;
+ 
 }
-

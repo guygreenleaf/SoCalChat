@@ -1,12 +1,12 @@
 import '../styles/App.css';
+import FormPage from './LoginForm'
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-      
+ 
+        <FormPage className="Login" />
 
-      </header>
     </div>
   );
 }
