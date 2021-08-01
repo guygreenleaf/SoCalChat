@@ -1,27 +1,42 @@
 {
-  "name": "nodeRestApi",
-  "version": "1.0.0",
-  "description": "node rest api",
-  "main": "index.js",
-  "author": "Guy Greenleaf",
-  "license": "MIT",
+  "name": "client",
+  "version": "0.1.0",
+  "private": true,
   "dependencies": {
-    "bcrypt": "^5.0.1",
+    "@testing-library/jest-dom": "^5.11.4",
+    "@testing-library/react": "^11.1.0",
+    "@testing-library/user-event": "^12.1.10",
     "concurrently": "^6.2.0",
-    "cookie-parser": "^1.4.5",
-    "cors": "^2.8.5",
-    "dotenv": "^10.0.0",
-    "express": "^4.17.1",
-    "express-jwt": "^6.0.0",
-    "helmet": "^4.6.0",
-    "jsonwebtoken": "^8.5.1",
-    "mongoose": "^5.13.3",
-    "morgan": "^1.10.0",
-    "nodemon": "^2.0.12"
+    "mdbreact": "^5.1.0",
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2",
+    "react-scripts": "4.0.3",
+    "web-vitals": "^1.0.1"
   },
   "scripts": {
-    "server": "nodemon server.js",
-    "concurrentlyDev": "concurrently \"yarn server\" \"cd ./client && yarn start\"",
-    "concurrentlyProd": "concurrently \"cd ./client && yarn install && yarn build\" \"yarn server\" "
-  }
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "prod": "\"concurrently react-scripts build\" \"cd server && yarn server\"",
+    "test": "react-scripts test",
+    "eject": "react-scripts eject"
+  },
+  "eslintConfig": {
+    "extends": [
+      "react-app",
+      "react-app/jest"
+    ]
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  },
+  "proxy": "http://localhost:5000"
 }
