@@ -22,6 +22,6 @@
   "scripts": {
     "server": "nodemon server.js",
     "concurrentlyDev": "concurrently \"yarn server\" \"cd ./client && yarn start\"",
-    "concurrentlyProd": "concurrently \"yarn server\" \"cd ./client && yarn build\""
+    "concurrentlyProd": "concurrently \"cd ./client && yarn install && yarn build\" \"yarn server\" "
   }
 }
