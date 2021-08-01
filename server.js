@@ -32,13 +32,13 @@ app.use(cors());
 app.use(cookieParser());
 
 
-
-
 //routes
 app.use("/api/users", userRoute);
 app.use("/api/auth", authRoute);
 
 
-app.listen(5000, ()=> {
-    console.log("Listening on port 5000");
+const PORT = process.env.PORT || 8081;
+
+app.listen(PORT, ()=> {
+    console.log("Listening on port " + PORT);
 })
