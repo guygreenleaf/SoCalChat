@@ -7,6 +7,7 @@
   "license": "MIT",
   "dependencies": {
     "bcrypt": "^5.0.1",
+    "concurrently": "^6.2.0",
     "cookie-parser": "^1.4.5",
     "cors": "^2.8.5",
     "dotenv": "^10.0.0",
@@ -19,6 +20,8 @@
     "nodemon": "^2.0.12"
   },
   "scripts": {
-    "server": "nodemon server.js"
+    "server": "nodemon server.js",
+    "concurrentlyDev": "concurrently \"yarn server\" \"cd ./client && yarn start\"",
+    "concurrentlyProd": "concurrently \"yarn server\" \"cd ./client && yarn build\""
   }
 }
